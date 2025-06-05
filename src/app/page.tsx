@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <div className="min-h-screen gradient-mesh overflow-hidden">
@@ -10,7 +12,7 @@ export default function Home() {
           <div className="hidden md:flex space-x-8">
             <a href="#research" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Research</a>
             <a href="#findings" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Findings</a>
-            <a href="#tools" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Tools</a>
+            <Link href="/demos" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Demos</Link>
             <a href="#paper" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Paper</a>
           </div>
         </div>
@@ -28,17 +30,16 @@ export default function Home() {
           
           <p className="text-xl text-white/80 max-w-4xl mx-auto mb-12 leading-relaxed font-light">
             Unstructured textual information is important for understanding innovation but challenging to study. 
-            This research develops deep-learning predictive models incorporating ChatGPT textual embeddings 
-            to access intricate information about patent quality, achieving 42% R-squared in predicting patent value.
+            This research develops deep-learning predictive models incorporating ChatGPT textual embeddings.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap">
             <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4482536" target="_blank" rel="noopener noreferrer" className="card-glass hover:shadow-glass-lg text-white px-8 py-4 rounded-2xl font-medium transition-all duration-300 transform hover:scale-105">
               Read the Paper
             </a>
-            <a href="#tools" className="glass hover:shadow-glass-lg border-white/20 text-white px-8 py-4 rounded-2xl font-medium transition-all duration-300 transform hover:scale-105">
-              Explore Tools (Coming Soon)
-            </a>
+            <Link href="/demos" className="glass hover:shadow-glass-lg border-white/20 text-white px-8 py-4 rounded-2xl font-medium transition-all duration-300 transform hover:scale-105">
+              Interactive Demos
+            </Link>
           </div>
         </div>
 
