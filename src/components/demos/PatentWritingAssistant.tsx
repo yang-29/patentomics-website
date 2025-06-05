@@ -22,10 +22,10 @@ const ImprovementItem: React.FC<ImprovementItemProps> = ({ improvement, index })
     <div className={`flex items-start transition-all duration-500 ${
       isVisible ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform -translate-x-4'
     }`}>
-      <div className="flex-shrink-0 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-medium mt-0.5">
+      <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 text-white rounded-full flex items-center justify-center text-sm font-medium mt-0.5">
         ✓
       </div>
-      <p className="ml-3 text-gray-700">{improvement}</p>
+      <p className="ml-3 text-white/80">{improvement}</p>
     </div>
   );
 };
@@ -58,21 +58,21 @@ const ScoreImprovement: React.FC<ScoreImprovementProps> = ({ label, before, afte
   }, [after]);
 
   return (
-    <div className="bg-gray-50 rounded-lg p-4">
-      <p className="text-sm text-gray-600 mb-2">{label}</p>
+    <div className="backdrop-blur-sm bg-white/5 rounded-2xl p-6 border border-white/10">
+      <p className="text-sm text-white/60 mb-2">{label}</p>
       <div className="flex items-baseline justify-between">
         <div className="flex items-baseline">
-          <span className="text-3xl font-bold text-gray-900">{currentScore}</span>
-          <span className="text-lg text-gray-500 ml-2">/ 100</span>
+          <span className="text-3xl font-light text-white">{currentScore}</span>
+          <span className="text-lg text-white/60 ml-2">/ 100</span>
         </div>
         <div className="flex items-center">
-          <svg className="w-5 h-5 text-green-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-green-400 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
           </svg>
-          <span className="text-green-600 font-semibold">+{improvementPercentage}%</span>
+          <span className="text-green-400 font-light">+{improvementPercentage}%</span>
         </div>
       </div>
-      <div className="mt-2 text-xs text-gray-500">
+      <div className="mt-2 text-xs text-white/40">
         {before} → {after} (+{improvement} points)
       </div>
     </div>
@@ -94,64 +94,69 @@ const PatentWritingAssistant: React.FC = () => {
     
     return words.map((word, index) => {
       if (!originalWords[index] || word !== originalWords[index]) {
-        return `<span class="bg-green-100 px-1 rounded">${word}</span>`;
+        return `<span class="bg-green-400/30 px-1 rounded backdrop-blur-sm">${word}</span>`;
       }
       return word;
     }).join(' ');
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Patent Writing Assistant Demo</h2>
-        <p className="text-gray-600">See how AI can improve patent application quality and acceptance rates</p>
-      </div>
-
-      {/* Patent Selection */}
-      <div className="mb-8">
-        <label className="block text-sm font-medium text-gray-700 mb-2">Select a Patent to Improve</label>
-        <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          value={selectedPatent.id}
-          onChange={(e) => {
-            setSelectedPatent(improvablePatents.find(p => p.id === e.target.value) || improvablePatents[0]);
-            setShowImproved(false);
-          }}
-        >
-          {improvablePatents.map(patent => (
-            <option key={patent.id} value={patent.id}>
-              {patent.title} (Current Score: {patent.qualityScore})
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Before/After Comparison */}
-      <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">{selectedPatent.title}</h3>
-          <div className="flex items-center space-x-4 text-sm text-gray-500">
-            <span>Application: {selectedPatent.applicationNumber}</span>
-            <span>•</span>
-            <span>Filed: {selectedPatent.filingDate}</span>
-            <span>•</span>
-            <span>Assignee: {selectedPatent.assignee}</span>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-light text-white mb-4">
+            Patent Writing Assistant
+          </h1>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            See how AI can improve patent application quality and acceptance rates
+          </p>
         </div>
 
-        {/* Improvement Button */}
-        <div className="flex justify-center mb-8">
-          <button
-            onClick={() => setShowImproved(!showImproved)}
-            className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
-              showImproved
-                ? 'bg-green-600 text-white hover:bg-green-700'
-                : 'bg-blue-600 text-white hover:bg-blue-700 animate-pulse'
-            }`}
+        {/* Patent Selection */}
+        <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-6 border border-white/20 mb-8">
+          <label className="block text-sm font-medium text-white/80 mb-3">Select a Patent to Improve</label>
+          <select
+            className="w-full p-4 backdrop-blur-sm bg-white/10 border border-white/20 rounded-2xl text-white focus:ring-2 focus:ring-white/40 focus:border-white/40 transition-all duration-300"
+            value={selectedPatent.id}
+            onChange={(e) => {
+              setSelectedPatent(improvablePatents.find(p => p.id === e.target.value) || improvablePatents[0]);
+              setShowImproved(false);
+            }}
           >
-            {showImproved ? '✓ Improvements Applied' : '🚀 Apply AI Improvements'}
-          </button>
+            {improvablePatents.map(patent => (
+              <option key={patent.id} value={patent.id} className="bg-gray-800">
+                {patent.title} (Current Score: {patent.qualityScore})
+              </option>
+            ))}
+          </select>
         </div>
+
+        {/* Before/After Comparison */}
+        <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 border border-white/20 mb-8">
+          <div className="mb-6">
+            <h3 className="text-2xl font-medium text-white mb-2">{selectedPatent.title}</h3>
+            <div className="flex items-center space-x-4 text-sm text-white/60">
+              <span>Application: {selectedPatent.applicationNumber}</span>
+              <span>•</span>
+              <span>Filed: {selectedPatent.filingDate}</span>
+              <span>•</span>
+              <span>Assignee: {selectedPatent.assignee}</span>
+            </div>
+          </div>
+
+          {/* Improvement Button */}
+          <div className="flex justify-center mb-8">
+            <button
+              onClick={() => setShowImproved(!showImproved)}
+              className={`px-8 py-3 rounded-2xl font-medium transition-all duration-300 backdrop-blur-sm border ${
+                showImproved
+                  ? 'bg-green-400/20 text-white hover:bg-green-400/30 border-green-400/40'
+                  : 'bg-white/20 text-white hover:bg-white/30 animate-pulse border-white/40'
+              }`}
+            >
+              {showImproved ? '✓ Improvements Applied' : 'Apply AI Improvements'}
+            </button>
+          </div>
 
         {/* Score Improvements */}
         {showImproved && selectedPatent.improvedVersion && (
@@ -174,97 +179,98 @@ const PatentWritingAssistant: React.FC = () => {
           </div>
         )}
 
-        {/* Abstract Comparison */}
-        <div className="space-y-6">
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-              {showImproved ? 'Original Abstract' : 'Current Abstract'}
-              {showImproved && (
-                <span className="ml-2 px-2 py-1 bg-gray-200 text-gray-600 text-xs rounded-full">Before</span>
-              )}
-            </h4>
-            <div className={`p-4 rounded-lg transition-all duration-300 ${
-              showImproved ? 'bg-gray-50 opacity-60' : 'bg-blue-50'
-            }`}>
-              <p className="text-gray-700 leading-relaxed">{selectedPatent.abstract}</p>
-            </div>
-          </div>
-
-          {showImproved && selectedPatent.improvedVersion && (
+          {/* Abstract Comparison */}
+          <div className="space-y-6">
             <div>
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-semibold text-gray-900 flex items-center">
-                  Improved Abstract
-                  <span className="ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs rounded-full">After</span>
-                </h4>
-                <label className="flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={highlightChanges}
-                    onChange={(e) => setHighlightChanges(e.target.checked)}
-                    className="sr-only"
+              <h4 className="font-medium text-white mb-3 flex items-center">
+                {showImproved ? 'Original Abstract' : 'Current Abstract'}
+                {showImproved && (
+                  <span className="ml-2 px-2 py-1 backdrop-blur-sm bg-white/10 text-white/60 text-xs rounded-full">Before</span>
+                )}
+              </h4>
+              <div className={`backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 ${
+                showImproved ? 'bg-white/5 opacity-60 border-white/10' : 'bg-white/10 border-white/20'
+              }`}>
+                <p className="text-white/80 leading-relaxed">{selectedPatent.abstract}</p>
+              </div>
+            </div>
+
+            {showImproved && selectedPatent.improvedVersion && (
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-medium text-white flex items-center">
+                    Improved Abstract
+                    <span className="ml-2 px-2 py-1 backdrop-blur-sm bg-green-400/20 text-green-400 text-xs rounded-full">After</span>
+                  </h4>
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={highlightChanges}
+                      onChange={(e) => setHighlightChanges(e.target.checked)}
+                      className="sr-only"
+                    />
+                    <div className="relative">
+                      <div className={`block w-10 h-6 rounded-full transition-colors ${
+                        highlightChanges ? 'bg-white/30' : 'bg-white/10'
+                      }`} />
+                      <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${
+                        highlightChanges ? 'transform translate-x-4' : ''
+                      }`} />
+                    </div>
+                    <span className="ml-2 text-sm text-white/60">Highlight changes</span>
+                  </label>
+                </div>
+                <div className="backdrop-blur-sm bg-green-400/10 rounded-2xl p-6 border border-green-400/20">
+                  <p 
+                    className="text-white/80 leading-relaxed"
+                    dangerouslySetInnerHTML={{ 
+                      __html: highlightChanges 
+                        ? getDiffHighlightedText(selectedPatent.abstract, selectedPatent.improvedVersion.abstract)
+                        : selectedPatent.improvedVersion.abstract
+                    }}
                   />
-                  <div className="relative">
-                    <div className={`block w-10 h-6 rounded-full transition-colors ${
-                      highlightChanges ? 'bg-green-600' : 'bg-gray-300'
-                    }`} />
-                    <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${
-                      highlightChanges ? 'transform translate-x-4' : ''
-                    }`} />
-                  </div>
-                  <span className="ml-2 text-sm text-gray-600">Highlight changes</span>
-                </label>
+                </div>
               </div>
-              <div className="p-4 bg-green-50 rounded-lg">
-                <p 
-                  className="text-gray-700 leading-relaxed"
-                  dangerouslySetInnerHTML={{ 
-                    __html: highlightChanges 
-                      ? getDiffHighlightedText(selectedPatent.abstract, selectedPatent.improvedVersion.abstract)
-                      : selectedPatent.improvedVersion.abstract
-                  }}
-                />
+            )}
+          </div>
+        </div>
+
+        {/* Improvements List */}
+        {showImproved && selectedPatent.improvedVersion && (
+          <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 border border-white/20">
+            <h3 className="text-2xl font-medium text-white mb-6">Key Improvements Made</h3>
+            <div className="space-y-4">
+              {selectedPatent.improvedVersion.improvements.map((improvement, index) => (
+                <ImprovementItem key={index} improvement={improvement} index={index} />
+              ))}
+            </div>
+
+            <div className="mt-8 backdrop-blur-sm bg-blue-400/10 rounded-2xl p-6 border border-blue-400/20">
+              <h4 className="font-medium text-blue-300 mb-4">Expected Impact</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div>
+                  <p className="text-2xl font-light text-white">
+                    {((selectedPatent.improvedVersion.qualityScore / selectedPatent.qualityScore - 1) * 100).toFixed(0)}%
+                  </p>
+                  <p className="text-sm text-white/60">Quality Increase</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-light text-white">
+                    {(0.21 * (selectedPatent.improvedVersion.qualityScore / selectedPatent.qualityScore)).toFixed(0)}%
+                  </p>
+                  <p className="text-sm text-white/60">Higher Acceptance Rate</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-light text-white">
+                    ${((selectedPatent.economicValue * 1.5) / 1000000).toFixed(1)}M
+                  </p>
+                  <p className="text-sm text-white/60">Potential Value</p>
+                </div>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
-
-      {/* Improvements List */}
-      {showImproved && selectedPatent.improvedVersion && (
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">Key Improvements Made</h3>
-          <div className="space-y-4">
-            {selectedPatent.improvedVersion.improvements.map((improvement, index) => (
-              <ImprovementItem key={index} improvement={improvement} index={index} />
-            ))}
-          </div>
-
-          <div className="mt-8 p-6 bg-blue-50 rounded-lg">
-            <h4 className="font-semibold text-blue-900 mb-2">Expected Impact</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-              <div>
-                <p className="text-2xl font-bold text-blue-900">
-                  {((selectedPatent.improvedVersion.qualityScore / selectedPatent.qualityScore - 1) * 100).toFixed(0)}%
-                </p>
-                <p className="text-sm text-blue-700">Quality Increase</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-blue-900">
-                  {(0.21 * (selectedPatent.improvedVersion.qualityScore / selectedPatent.qualityScore)).toFixed(0)}%
-                </p>
-                <p className="text-sm text-blue-700">Higher Acceptance Rate</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-blue-900">
-                  ${((selectedPatent.economicValue * 1.5) / 1000000).toFixed(1)}M
-                </p>
-                <p className="text-sm text-blue-700">Potential Value</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
