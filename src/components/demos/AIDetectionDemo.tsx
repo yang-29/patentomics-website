@@ -180,7 +180,7 @@ const AIDetectionDemo: React.FC = () => {
                 <div key={index} className="flex items-start">
                   <div className="flex-shrink-0 w-2 h-2 bg-yellow-400 rounded-full mt-1.5 mr-3" />
                   <div>
-                    <span className="font-medium text-gray-900">"{phrase.text}"</span>
+                    <span className="font-medium text-gray-900">&ldquo;{phrase.text}&rdquo;</span>
                     <p className="text-sm text-gray-600 mt-1">{phrase.explanation}</p>
                   </div>
                 </div>

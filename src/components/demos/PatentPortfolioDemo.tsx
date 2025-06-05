@@ -94,7 +94,7 @@ export default function PatentPortfolioDemo() {
                   {['1Y', '2Y', 'ALL'].map((range) => (
                     <button
                       key={range}
-                      onClick={() => setTimeRange(range as any)}
+                      onClick={() => setTimeRange(range as '1Y' | '2Y' | 'ALL')}
                       className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                         timeRange === range
                           ? 'bg-white/20 text-white'

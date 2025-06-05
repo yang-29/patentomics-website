@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { researchMetrics, innovationTrends, sectorPerformance } from '@/data/samplePatents';
+import { researchMetrics, innovationTrends } from '@/data/samplePatents';
 
 export default function ResearchInsightsDashboard() {
   const [selectedMetric, setSelectedMetric] = useState<'performance' | 'economic' | 'detection'>('performance');
@@ -255,7 +255,7 @@ export default function ResearchInsightsDashboard() {
                 {['performance', 'economic', 'detection'].map((metric) => (
                   <button
                     key={metric}
-                    onClick={() => setSelectedMetric(metric as any)}
+                    onClick={() => setSelectedMetric(metric as 'performance' | 'economic' | 'detection')}
                     className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                       selectedMetric === metric
                         ? 'bg-white/20 text-white'

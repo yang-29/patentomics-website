@@ -76,7 +76,7 @@ export default function TechnologyLandscape() {
       });
 
       // Draw nodes
-      nodesRef.current.forEach((node, index) => {
+      nodesRef.current.forEach((node) => {
         // Animate size
         if (node.animatedSize < node.targetSize) {
           node.animatedSize += (node.targetSize - node.animatedSize) * 0.1;
