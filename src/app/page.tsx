@@ -13,7 +13,7 @@ export default function Home() {
             <a href="#research" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Research</a>
             <a href="#findings" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Findings</a>
             <Link href="/demos" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Demos</Link>
-            <a href="#paper" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Paper</a>
+            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4482536" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Paper</a>
           </div>
         </div>
       </nav>

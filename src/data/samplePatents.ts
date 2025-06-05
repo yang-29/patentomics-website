@@ -407,3 +407,156 @@ export const researchMetrics = {
     humanBaselineAccuracy: 0.76
   }
 };
+
+// Technology landscape data for visualization
+export const technologyNodes = [
+  {
+    id: 'ai-ml',
+    label: 'AI & Machine Learning',
+    x: 300,
+    y: 200,
+    size: 45,
+    patents: 15234,
+    growth: 0.42,
+    connections: ['data-analytics', 'nlp', 'computer-vision']
+  },
+  {
+    id: 'data-analytics',
+    label: 'Data Analytics',
+    x: 500,
+    y: 150,
+    size: 35,
+    patents: 8932,
+    growth: 0.28,
+    connections: ['ai-ml', 'cloud-computing']
+  },
+  {
+    id: 'nlp',
+    label: 'Natural Language Processing',
+    x: 250,
+    y: 350,
+    size: 30,
+    patents: 6789,
+    growth: 0.65,
+    connections: ['ai-ml', 'speech-recognition']
+  },
+  {
+    id: 'computer-vision',
+    label: 'Computer Vision',
+    x: 450,
+    y: 300,
+    size: 38,
+    patents: 11234,
+    growth: 0.38,
+    connections: ['ai-ml', 'ar-vr']
+  },
+  {
+    id: 'cloud-computing',
+    label: 'Cloud Computing',
+    x: 600,
+    y: 250,
+    size: 40,
+    patents: 12567,
+    growth: 0.22,
+    connections: ['data-analytics', 'edge-computing']
+  },
+  {
+    id: 'edge-computing',
+    label: 'Edge Computing',
+    x: 700,
+    y: 180,
+    size: 25,
+    patents: 4567,
+    growth: 0.82,
+    connections: ['cloud-computing', 'iot']
+  },
+  {
+    id: 'iot',
+    label: 'Internet of Things',
+    x: 650,
+    y: 350,
+    size: 32,
+    patents: 7890,
+    growth: 0.35,
+    connections: ['edge-computing', 'smart-devices']
+  },
+  {
+    id: 'speech-recognition',
+    label: 'Speech Recognition',
+    x: 150,
+    y: 280,
+    size: 28,
+    patents: 5678,
+    growth: 0.48,
+    connections: ['nlp']
+  },
+  {
+    id: 'ar-vr',
+    label: 'AR/VR Technologies',
+    x: 550,
+    y: 380,
+    size: 33,
+    patents: 8901,
+    growth: 0.55,
+    connections: ['computer-vision', 'smart-devices']
+  },
+  {
+    id: 'smart-devices',
+    label: 'Smart Devices',
+    x: 750,
+    y: 280,
+    size: 30,
+    patents: 6543,
+    growth: 0.31,
+    connections: ['iot', 'ar-vr']
+  }
+];
+
+// Extended portfolio data with time series
+export const portfolioTimeSeries = [
+  { date: '2021-01', value: 100, benchmark: 100 },
+  { date: '2021-02', value: 102.3, benchmark: 101.1 },
+  { date: '2021-03', value: 105.1, benchmark: 102.0 },
+  { date: '2021-04', value: 103.8, benchmark: 101.5 },
+  { date: '2021-05', value: 107.2, benchmark: 103.2 },
+  { date: '2021-06', value: 109.5, benchmark: 104.1 },
+  { date: '2021-07', value: 111.8, benchmark: 105.0 },
+  { date: '2021-08', value: 110.2, benchmark: 104.5 },
+  { date: '2021-09', value: 113.6, benchmark: 106.2 },
+  { date: '2021-10', value: 116.9, benchmark: 107.8 },
+  { date: '2021-11', value: 115.4, benchmark: 107.0 },
+  { date: '2021-12', value: 118.7, benchmark: 108.9 },
+  { date: '2022-01', value: 117.2, benchmark: 107.5 },
+  { date: '2022-02', value: 119.8, benchmark: 108.8 },
+  { date: '2022-03', value: 122.5, benchmark: 110.2 },
+  { date: '2022-04', value: 121.0, benchmark: 109.5 },
+  { date: '2022-05', value: 124.3, benchmark: 111.1 },
+  { date: '2022-06', value: 126.8, benchmark: 112.5 },
+  { date: '2022-07', value: 129.2, benchmark: 114.0 },
+  { date: '2022-08', value: 127.6, benchmark: 113.2 },
+  { date: '2022-09', value: 131.1, benchmark: 115.5 },
+  { date: '2022-10', value: 134.5, benchmark: 117.2 },
+  { date: '2022-11', value: 133.0, benchmark: 116.4 },
+  { date: '2022-12', value: 136.8, benchmark: 118.3 }
+];
+
+// Sector performance data
+export const sectorPerformance = [
+  { sector: 'Information Technology', avgQuality: 82, patentCount: 45678, growth: 0.35 },
+  { sector: 'Healthcare & Biotech', avgQuality: 78, patentCount: 38901, growth: 0.28 },
+  { sector: 'Clean Energy', avgQuality: 75, patentCount: 23456, growth: 0.62 },
+  { sector: 'Advanced Materials', avgQuality: 71, patentCount: 19876, growth: 0.18 },
+  { sector: 'Telecommunications', avgQuality: 69, patentCount: 31234, growth: 0.22 },
+  { sector: 'Automotive', avgQuality: 66, patentCount: 27890, growth: 0.15 }
+];
+
+// Innovation trends data
+export const innovationTrends = [
+  { year: 2018, aiGenerated: 2.3, humanWritten: 97.7, totalApplications: 412567 },
+  { year: 2019, aiGenerated: 3.8, humanWritten: 96.2, totalApplications: 428901 },
+  { year: 2020, aiGenerated: 5.6, humanWritten: 94.4, totalApplications: 445678 },
+  { year: 2021, aiGenerated: 8.9, humanWritten: 91.1, totalApplications: 467890 },
+  { year: 2022, aiGenerated: 14.2, humanWritten: 85.8, totalApplications: 489012 },
+  { year: 2023, aiGenerated: 23.7, humanWritten: 76.3, totalApplications: 512345 },
+  { year: 2024, aiGenerated: 31.5, humanWritten: 68.5, totalApplications: 498765 }
+];
